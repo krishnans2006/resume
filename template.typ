@@ -45,6 +45,8 @@
   // Link styles
   show link: underline
   
+  // List styles
+  set list(indent: 0.75em)
   
   // Small caps for section titles
   show heading.where(level: 2): it => [
@@ -68,19 +70,19 @@
       weight: 700,
       size: author-font-size,
     )
-    #pad(it.body)
+    #pad(it.body, bottom: -0.2em)
   ]
   
   // Level 1 Heading
   [= #(author)]
   
   // Personal Info Helper
-  let contact-item(value, prefix: "", link-type: "") = {
+  let contact-item(value, prefix: "", link-type: "", suffix: "") = {
     if value != "" {
       if link-type != "" {
-        prefix + link(link-type + value)[#(value)]
+        prefix + link(link-type + value)[#(value)] + suffix
       } else {
-        prefix + value
+        prefix + value + suffix
       }
     }
   }
@@ -124,6 +126,13 @@
             location,
             prefix: svg-icon("icons/location.svg", rgb(icon-color)),
           ),
+      // Uncomment below to split personal info section into two lines
+      //   )
+      //   items.filter(x => x != none).join(" | ")
+      // }
+      // \
+      // #{
+      //   let items = (
           contact-item(
             github,
             prefix: svg-icon("icons/github.svg", rgb(icon-color)),
@@ -185,30 +194,16 @@
 // Section components below
 #let edu(
   institution: "",
-  dates: "",
   degree: "",
-  gpa: "",
-  location: "",
-  // Makes dates on upper right like rest of components
-  consistent: false,
+  top: "",
+  bottom: "",
 ) = {
-  if consistent {
-    // edu-constant style (dates top-right, location bottom-right)
-    generic-two-by-two(
-      top-left: strong(institution),
-      top-right: dates,
-      bottom-left: emph(degree),
-      bottom-right: emph(location),
-    )
-  } else {
-    // original edu style (location top-right, dates bottom-right)
-    generic-two-by-two(
-      top-left: strong(institution),
-      top-right: location,
-      bottom-left: emph(degree),
-      bottom-right: emph(dates),
-    )
-  }
+  generic-two-by-two(
+    top-left: strong(institution),
+    bottom-left: emph(degree),
+    top-right: top,
+    bottom-right: bottom,
+  )
 }
 
 #let work(
@@ -225,51 +220,48 @@
   )
 }
 
-#let project(
-  role: "",
-  name: "",
-  url: "",
+#let mini(
+  title: "",
+  company: "",
   dates: "",
 ) = {
   generic-one-by-two(
     left: {
-      if role == "" {
-        [*#name* #if url != "" and dates != "" [ (#link("https://" + url)[#url])]]
+      if title == "" {
+        [*#company*]
       } else {
-        [*#role*, #name #if url != "" and dates != ""  [ (#link("https://" + url)[#url])]]
+        [*#title*, #company]
       }
     },
     right: {
-      if dates == "" and url != "" {
-        link("https://" + url)[#url]
-      } else {
+      if dates != "" {
         dates
       }
     },
   )
 }
 
-#let certificates(
-  name: "",
-  issuer: "",
-  url: "",
-  date: "",
-) = {
-  [
-    *#name*, #issuer
-    #if url != "" {
-      [ (#link("https://" + url)[#url])]
-    }
-    #h(1fr) #date
-  ]
-}
+// #let certificates(
+//   name: "",
+//   issuer: "",
+//   url: "",
+//   date: "",
+// ) = {
+//   [
+//     *#name*, #issuer
+//     #if url != "" {
+//       [ (#link("https://" + url)[#url])]
+//     }
+//     #h(1fr) #date
+//   ]
+// }
 
-#let extracurriculars(
-  activity: "",
-  dates: "",
-) = {
-  generic-one-by-two(
-    left: strong(activity),
-    right: dates,
- )
-}
+// #let extracurriculars(
+//   activity: "",
+//   dates: "",
+// ) = {
+//   generic-one-by-two(
+//     left: strong(activity),
+//     right: dates,
+//  )
+// }

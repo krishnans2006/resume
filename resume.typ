@@ -1,10 +1,14 @@
 #import "./template.typ": *
 
-#let email = "stxu@hmc.edu"
-#let github = "github.com/stuxf"
-#let linkedin = "linkedin.com/in/stuxf"
-#let phone = "+1 (xxx) xxx-xxxx"
-#let personal-site = "stuxf.dev"
+#let primary-color = "#000000"
+#let secondary-color = "#555555"
+#let accent-color = "#00ab44"
+#let icon-color = "#53bb84"
+#let link-color = "#1155cc"
+
+// Set these to match the colors above for a more colorful resume
+#let template-secondary-color = "#222222"
+#let template-accent-color = "#000000"
 
 #show: resume.with(
   author: "Krishnan Shankar",
@@ -15,121 +19,113 @@
   linkedin: "krishnan-shankar",
   personal-site: "krishy.dev",
 
-  // primary-color: "#000000",
-  // secondary-color: "#555555",
-  // accent-color: "#00ab44",
-  // icon-color: "#53bb84",
-  // link-color: "#1155cc",
+  primary-color: primary-color,
+  secondary-color: template-secondary-color,
+  accent-color: template-accent-color,
+  icon-color: icon-color,
+  link-color: link-color,
 )
 
-/*
- * Lines that start with == are formatted into section headings
- * You can use the specific formatting functions if needed
- * The following formatting functions are listed below
- * #edu(dates: "", degree: "", gpa: "", institution: "", location: "", consistent: false)
- * #work(company: "", dates: "", location: "", title: "")
- * #project(dates: "", name: "", role: "", url: "")
- * certificates(name: "", issuer: "", url: "", date: "")
- * #extracurriculars(activity: "", dates: "")
- * There are also the following generic functions that don't apply any formatting
- * #generic-two-by-two(top-left: "", top-right: "", bottom-left: "", bottom-right: "")
- * #generic-one-by-two(left: "", right: "")
- */
+#let accent(value) = {
+  set text(fill: rgb(accent-color))
+  strong(value)
+}
+
+#let plainlink(url, value) = {
+  show link: set text(
+    fill: rgb(primary-color)
+  )
+  link(url)[#value]
+}
+
 == Education
 
 #edu(
-  institution: "Harvey Mudd College",
-  location: "Claremont, CA",
-  dates: dates-helper(start-date: "Aug 2023", end-date: "May 2027"),
-  degree: "Bachelor's of Science, Computer Science and Mathematics",
-  
-  // Uncomment the line below if you want edu formatting to be consistent with everything else
-  // consistent: true
+  institution: "University of Illinois Urbana-Champaign",
+  degree: "Bachelor of Science in Computer Engineering",
+  top: "Expected Graduation: May 2027",
+  bottom: [GPA: *4.0/4.0*],
 )
-- Cumulative GPA: 4.0\/4.0 | Dean's List, Harvey S. Mudd Merit Scholarship, National Merit Scholarship
-- Relevant Coursework: Data Structures, Program Development, Microprocessors, Abstract Algebra I: Groups and Rings, Linear Algebra, Discrete Mathematics, Multivariable & Single Variable Calculus, Principles and Practice of Comp Sci
+- Current Coursework: #accent[ECE 391] Computer Systems/OS Design, #accent[ECE 385] Digital Systems/FPGA Lab
+- Past Coursework: #accent[CS 225] Data Structures, #accent[ECE 220H] Computer Systems Programming, #accent[ECE 198H] Honors Project
+
+#edu(
+  institution: "Thomas Jefferson High School for Science & Technology",
+  degree: "Fairfax County Public Schools, Advanced Studies Diploma",
+  top: "Fairfax, VA",
+  bottom: [GPA: *4.467/4.0*],
+)
+- Coursework: Artificial Intelligence 1 & 2 (#accent[A],#accent[A]), Machine Learning 1 & 2 (#accent[A],#accent[A]), Robotic Systems (#accent[A]),
+  \
+  Robot Automation (#accent[A]), Digital Electronics (#accent[A]), Analog Electronics (#accent[A]), Engineering Senior Research Project (#accent[A])
 
 == Work Experience
 
 #work(
-  title: "Subatomic Shepherd and Caffeine Connoisseur",
-  location: "Atomville, CA",
-  company: "Microscopic Circus, Schrodinger's University",
-  dates: dates-helper(start-date: "May 2024", end-date: "Present"),
+  title: "Quantum Computing Student Researcher",
+  location: "McLean, VA",
+  company: plainlink("https://mitre.org")[The MITRE Corporation],
+  dates: dates-helper(start-date: "June 2025", end-date: "Present"),
 )
-- Played God with tiny molecules, making them dance to uncover the secrets of the universe
-- Convinced high-performance computers to work overtime without unions, reducing simulation time by 50%
-- Wowed a room full of nerds with pretty pictures of invisible things and imaginary findings
+- Derived a model (with 15+ variables) from scratch to relate quantum computer characteristics to real-world effectiveness
+- Determined quantitative requirements for quantum computers to #accent[crack RSA 2048 encryption]
+- Presented this research in multiple company-wide briefings, and started writing a research paper
 
 #work(
-  title: "AI Wrangler and Code Ninja",
-  location: "Silicon Mirage, CA",
-  company: "Organic Stupidity Startup",
-  dates: dates-helper(start-date: "Dec 2023", end-date: "Mar 2024"),
+  title: "Networking/Telecommunications Student Researcher",
+  location: "McLean, VA",
+  company: plainlink("https://mitre.org")[The MITRE Corporation],
+  dates: dates-helper(start-date: "June 2023", end-date: "May 2025"),
 )
-- Taught robots to predict when (and how much!) humans will empty their wallets at the doctor's office
-- Developed HIPAA-compliant digital signatures, because doctors' handwriting wasn't illegible enough already
-- Turned spaghetti code into a gourmet dish, making other interns drool with envy
+- Designed and built a #accent[novel 5G proxy] to improve speed/bandwidth for non-5G access to 5G networks
+- Integrated the proxy into a real US government application, achieving a #accent[99.93% reduction] in connection time
+- Used Ansible, Python, and Bash scripting to automate deployment of the proxy (and other parts of 5G infrastructure)
+- Presented this innovation in numerous company-wide briefings and sponsor presentations
 
 #work(
-  title: "Digital Playground Architect",
-  location: "The Cloud",
-  company: "Pixels & Profit Interactive",
-  dates: dates-helper(start-date: "Jun 2020", end-date: "May 2023"),
+  title: "Lead Student Systems Administrator",
+  location: "Alexandria, VA",
+  company: [#plainlink("https://sysadmins.tjhsst.edu")[TJ Computer Systems Lab], Fairfax County Public Schools],
+  dates: dates-helper(start-date: "Jun 2021", end-date: "Present"),
 )
-- Scaled user base from 10 to 2000+, accidentally becoming a small wealthy nation in the process
-- Crafted Bash scripts so clever they occasionally made other engineers weep with joy
-- Automated support responses, reducing human interaction to a level that would make introverts proud
-- Built a documentation site that actually got read, breaking the ancient RTFM curse
-
-#work(
-  title: "Code Conjurer Intern",
-  location: "Silicon Suburb, CA",
-  company: "Bits & Bytes Consulting",
-  dates: dates-helper(start-date: "Jun 2022", end-date: "Aug 2022"),
-)
-- Developed a cross-platform mobile app that turned every user into a potential paparazzi
-- Led a security overhaul, heroically saving the company from the menace of "password123"
-
-== Projects
-
-#project(
-  name: "Hyperschedule",
-  // Role is optional
-  role: "Maintainer",
-  // Dates is optional
-  dates: dates-helper(start-date: "Nov 2023", end-date: "Present"),
-  // URL is also optional
-  url: "hyperschedule.io",
-)
-- Maintain open-source scheduler used by 7000+ users at the Claremont Consortium with TypeScript, React and MongoDB
-  - Manage PR reviews, bug fixes, and coordinate with college for releasing scheduling data and over \$1500 of yearly funding
-- Ensure 99.99% uptime during peak loads of 1M daily requests during course registration through redundant servers
+- Configured a high-availability, triple-replicated network filesystem across 5 servers using Ceph and NFS
+  - The system now serves over #accent[2000 teachers/students] and securely stores over #accent[200TB of data]
+- Developed #link("https://github.com/tjcsl/tin")[Turn-In], a code autograder built with Django that is now used in every computer science class at TJ
+  - Over #accent[460,000 student submissions] have been automatically graded since September 2022
+- Managed and improved the #link("https://github.com/tjcsl/ion")[TJ Intranet], a school-wide hub used for club signups, free printing, bus tracking, and more
+- Also responsible for a 50+ node compute cluster, a Docker-based website hosting platform, and self-hosted mailservers
 
 == Extracurricular Activities
 
-#extracurriculars(
-  activity: "Capture The Flag Competitions",
-  dates: dates-helper(start-date: "Jan 2021", end-date: "Present"),
+#mini(
+  title: "Chair",
+  company: plainlink("https://glug.acm.illinois.edu")[GNU/Linux User Group \@ UIUC],
+  dates: dates-helper(start-date: "May 2025", end-date: "Present"),
 )
-- Founder of Les Amateurs (#link("https://amateurs.team")[amateurs.team]), currently ranked \#4 US, \#33 global on CTFTime (2023: \#4 US, \#42 global)
-- Organized AmateursCTF 2023 and 2024, with 1000+ teams solving at least one challenge and \$2000+ in cash prizes
-  - Scaled infrastructure using GCP, Digital Ocean with Kubernetes and Docker; deployed custom software on fly.io
-- Qualified for DEFCON CTF 32 and CSAW CTF 2023, two of the most prestigious cybersecurity competitions globally
 
-// #extracurriculars(
-//   activity: "Science Olympiad Volunteering",
-//   dates: "Sep 2023 --- Present"
-// )
-// - Volunteer and write tests for tournaments, including LA Regionals and SoCal State \@ Caltech
+#mini(
+  title: "Helper",
+  company: plainlink("https://sigpwny.com")[SIGPwny (Cybersecurity \@ UIUC)],
+  dates: dates-helper(start-date: "Apr 2025", end-date: "Present"),
+)
+- Helped build a #link("https://github.com/sigpwny/2025-ectf-uiuc")[secure satellite TV system], using Rust, for MITRE's eCTF competition (placed 5th internationally)
 
-// #certificates(
-//   name: "OSCP",
-//   issuer: "Offensive Security",
-//   // url: "",
-//   date: "Oct 2024",
-// )
+#mini(
+  title: "Club President",
+  company: plainlink("https://tjuav.org")[TJ Unmanned Aerial Vehicle],
+  dates: dates-helper(start-date: "Feb 2021", end-date: "Aug 2024"),
+)
+- Designed and integrated a #accent[triple-radio communications system] for reliable flight control and fast image transfer
+- Developed a #link("https://github.com/tj-uav/GroundStation")[custom ground station] using Flask and React for telemetry, object detection/classification, and payload drop
 
-== Skills
-- *Programming Languages*: JavaScript, Python, C/C++, HTML/CSS, Java, Bash, R, Flutter, Dart
-- *Technologies*: React, Astro, Svelte, Tailwind CSS, Git, UNIX, Docker, Caddy, NGINX, Google Cloud Platform
+== Projects
+#set list(indent: 0em, spacing: 0.8em)
+- A #link("https://github.com/krishnans2006/nixos-config")[custom NixOS configuration] to declaratively manage the OS, software, and dotfiles for my PC and laptop
+- #link("https://github.com/krishnans2006/strife")[Strife], an open-source clone of modern chat apps like Discord/Slack, built from scratch with Django and websockets
+- 20+ #link("https://github.com/stars/krishnans2006/lists/my-hackathon-projects")[Hackathon projects] (built with a team), 15+ #link("https://github.com/stars/krishnans2006/lists/my-games")[desktop/terminal games], 10+ #link("https://github.com/stars/krishnans2006/lists/my-websites")[custom websites], and #link("https://github.com/stars/krishnans2006/lists/my-school-projects")[so] #link("https://github.com/stars/krishnans2006/lists/electric-plug-my-pcbs")[much] #link("https://github.com/stars/krishnans2006/lists/my-discord-bots")[more]!
+
+== Technical Skills
+#set list(indent: 0em, spacing: 0.8em)
+- *Languages*: #accent[Python] (Django, Flask, PyTorch), #accent[Rust], Nix, SystemVerilog, C, C++, Bash, JavaScript, Go, Java
+- *Technologies*: #accent[Linux] (NixOS, Debian/Ubuntu, RHEL, Raspberry Pi), #accent[Git] (GitHub, GitLab), Ansible, Docker, Kubernetes
+- *Full-Stack Web Development*: Django/Flask, NodeJS, Svelte, React, HTML/CSS/JavaScript, SQL, Firebase
