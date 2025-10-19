@@ -160,6 +160,9 @@
   body
 }
 
+// "Add space after list item"
+#let gap = v(10pt, weak: true)
+
 // Generic two by two component for resume
 #let generic-two-by-two(
   top-left: "",
@@ -230,7 +233,7 @@
       if title == "" {
         [*#company*]
       } else {
-        [*#title*, #company]
+        [*#title* - #company]
       }
     },
     right: {

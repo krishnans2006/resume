@@ -55,32 +55,26 @@
   top: "Fairfax, VA",
   bottom: [GPA: *4.467/4.0*],
 )
-- Coursework: Artificial Intelligence 1 & 2 (#accent[A],#accent[A]), Machine Learning 1 & 2 (#accent[A],#accent[A]), Robotic Systems (#accent[A]),
+- Coursework: Artificial Intelligence  1, Artificial Intelligence 2, Machine Learning 1, Machine Learning 2,
   \
-  Robot Automation (#accent[A]), Digital Electronics (#accent[A]), Analog Electronics (#accent[A]), Engineering Senior Research Project (#accent[A])
+  Robotic Systems, Robot Automation, Digital Electronics, Analog Electronics, Engineering Senior Research Project
 
 == Work Experience
 
 #work(
-  title: "Quantum Computing Student Researcher",
+  title: "Emerging Technologies Student Researcher",
   location: "McLean, VA",
   company: plainlink("https://mitre.org")[The MITRE Corporation],
-  dates: dates-helper(start-date: "June 2025", end-date: "Present"),
-)
-- Derived a model (with 15+ variables) from scratch to relate quantum computer characteristics to real-world effectiveness
-- Determined quantitative requirements for quantum computers to #accent[crack RSA 2048 encryption]
-- Presented this research in multiple company-wide briefings, and started writing a research paper
-
-#work(
-  title: "Networking/Telecommunications Student Researcher",
-  location: "McLean, VA",
-  company: plainlink("https://mitre.org")[The MITRE Corporation],
-  dates: dates-helper(start-date: "June 2023", end-date: "May 2025"),
+  dates: dates-helper(start-date: "Jun 2023", end-date: "Present"),
 )
 - Designed and built a #accent[novel 5G proxy] to improve speed/bandwidth for non-5G access to 5G networks
-- Integrated the proxy into a real US government application, achieving a #accent[99.93% reduction] in connection time
+- Integrated the proxy into a real US government application, achieving a #accent[99.93% reduction] in first connection time
 - Used Ansible, Python, and Bash scripting to automate deployment of the proxy (and other parts of 5G infrastructure)
-- Presented this innovation in numerous company-wide briefings and sponsor presentations
+#gap
+- Derived a model (with 15+ variables) from scratch to relate quantum computer characteristics to real-world effectiveness
+- Used the model to determine quantitative requirements for quantum computers to #accent[crack RSA 2048 encryption]
+#gap
+- Presented in six company-wide briefings and two sponsor presentations, started writing a research paper for publication
 
 #work(
   title: "Lead Student Systems Administrator",
@@ -89,11 +83,11 @@
   dates: dates-helper(start-date: "Jun 2021", end-date: "Present"),
 )
 - Configured a high-availability, triple-replicated network filesystem across 5 servers using Ceph and NFS
-  - The system now serves over #accent[2000 teachers/students] and securely stores over #accent[200TB of data]
+  - The system now serves over #accent[2000 students and faculty] and securely stores over #accent[200TB of data]
 - Developed #link("https://github.com/tjcsl/tin")[Turn-In], a code autograder built with Django that is now used in every computer science class at TJ
   - Over #accent[460,000 student submissions] have been automatically graded since September 2022
-- Managed and improved the #link("https://github.com/tjcsl/ion")[TJ Intranet], a school-wide hub used for club signups, free printing, bus tracking, and more
-- Also responsible for a 50+ node compute cluster, a Docker-based website hosting platform, and self-hosted mailservers
+- Managed and improved the #link("https://github.com/tjcsl/ion")[TJ Intranet], a school-wide hub used for extracurricular activity signups, bus tracking, and more
+- Worked on and responsible for a 50+ node high-performance computing (HPC) cluster, a Docker-based website hosting platform, a centralized authentication system (LDAP, Kerberos), DNS/DHCP configuration, and self-hosted mailservers
 
 == Extracurricular Activities
 
@@ -104,7 +98,7 @@
 )
 
 #mini(
-  title: "Helper",
+  title: "Embedded Team Lead, Purple Team Lead",
   company: plainlink("https://sigpwny.com")[SIGPwny (Cybersecurity \@ UIUC)],
   dates: dates-helper(start-date: "Apr 2025", end-date: "Present"),
 )
@@ -112,17 +106,17 @@
 
 #mini(
   title: "Club President",
-  company: plainlink("https://tjuav.org")[TJ Unmanned Aerial Vehicle],
+  company: plainlink("https://tjuav.org")[TJ Unmanned Aerial Vehicle (TJ UAV)],
   dates: dates-helper(start-date: "Feb 2021", end-date: "Aug 2024"),
 )
-- Designed and integrated a #accent[triple-radio communications system] for reliable flight control and fast image transfer
+- Designed and integrated a #accent[triple-radio communications system], using a 900MHz RFD900x for autonomous flight and telemetry, a 2.4GHz RC transmitter for manual control, and a 5GHz Ubiquiti Bullet WiFi link for fast image transfer
 - Developed a #link("https://github.com/tj-uav/GroundStation")[custom ground station] using Flask and React for telemetry, object detection/classification, and payload drop
 
 == Projects
 #set list(indent: 0em, spacing: 0.8em)
 - A #link("https://github.com/krishnans2006/nixos-config")[custom NixOS configuration] to declaratively manage the OS, software, and dotfiles for my PC and laptop
 - #link("https://github.com/krishnans2006/strife")[Strife], an open-source clone of modern chat apps like Discord/Slack, built from scratch with Django and websockets
-- 20+ #link("https://github.com/stars/krishnans2006/lists/my-hackathon-projects")[Hackathon projects] (built with a team), 15+ #link("https://github.com/stars/krishnans2006/lists/my-games")[desktop/terminal games], 10+ #link("https://github.com/stars/krishnans2006/lists/my-websites")[custom websites], and #link("https://github.com/stars/krishnans2006/lists/my-school-projects")[so] #link("https://github.com/stars/krishnans2006/lists/electric-plug-my-pcbs")[much] #link("https://github.com/stars/krishnans2006/lists/my-discord-bots")[more]!
+- 20+ #link("https://github.com/stars/krishnans2006/lists/my-hackathon-projects")[Hackathon projects] (built with a team), 15+ #link("https://github.com/stars/krishnans2006/lists/my-games")[desktop/terminal games], 10+ #link("https://github.com/stars/krishnans2006/lists/my-websites")[custom websites], and #link("https://github.com/stars/krishnans2006/lists/my-school-projects")[so] #link("https://github.com/stars/krishnans2006/lists/electric-plug-my-pcbs")[much] #link("https://github.com/stars/krishnans2006/lists/my-discord-bots")[more]
 
 == Technical Skills
 #set list(indent: 0em, spacing: 0.8em)
